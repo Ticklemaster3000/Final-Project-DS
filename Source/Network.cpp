@@ -68,12 +68,29 @@ void Network::createConnection(const std::string& email1, const std::string& ema
 
 //display the connection
 void Network::showConnections() const {
-    std::cout << "\n--- User Connections Graph ---" << std::endl;
+    std::cout << "\n=== User Connection Network ===\n";
+    bool any = false;
+
     for (size_t i = 0; i < users.size(); ++i) {
-        std::cout << "User: " << users[i].getName() << " (ID: " << i << ")" << std::endl;
+        auto connections = userConnections.getConnectionsOf(i);
+        if (!connections.empty()) {
+            any = true;
+            std::cout << "\n" << users[i].getName() << " (" << users[i].getEmail() << ")\n";
+            std::cout << "-> Connected with:\n";
+
+            for (int connectedIndex : connections) {
+                std::cout << "      - " << users[connectedIndex].getName()
+                          << " (" << users[connectedIndex].getEmail() << ")\n";
+            }
+        }
     }
-    userConnections.printGraph();
+
+    if (!any)
+        std::cout << "No user connections found yet.\n";
+
+    std::cout << "===============================\n";
 }
+
 
 void Network::findMusiciansByInstrument(const std::string& instrument) const {
     std::cout << "\nSearching for musicians who play " << instrument << "..." << std::endl;
@@ -90,3 +107,26 @@ User* Network::getUserByEmail(const string& email) {
     }
     return nullptr;
 }
+
+void Network::displayUserConnections(const std::string& email) const {
+    int index = findUserIndexByEmail(email);
+    if (index == -1) {
+        std::cout << "Error: User not found.\n";
+        return;
+    }
+
+    auto connections = userConnections.getConnectionsOf(index);
+
+    std::cout << "\n--- Connections for " << users[index].getName() << " ---" << std::endl;
+    if (connections.empty()) {
+        std::cout << "No connections found.\n";
+        return;
+    }
+
+    for (int connectedIndex : connections) {
+        std::cout << "- " << users[connectedIndex].getName() 
+                  << " (" << users[connectedIndex].getEmail() << ")" << std::endl;
+    }
+    std::cout << "-------------------------------\n";
+}
+

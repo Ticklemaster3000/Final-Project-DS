@@ -22,3 +22,9 @@ void Graph::printGraph() const {
     }
     std::cout << "----------------------" << std::endl;
 }
+
+std::list<int> Graph::getConnectionsOf(int v) const {
+    if (v < 0 || v >= numVertices) return {};
+    return adj[v];
+}
+

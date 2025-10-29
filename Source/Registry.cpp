@@ -1,4 +1,4 @@
-#include "../include/registry.h"
+#include "../include/Registry.h"
 using namespace std;
 
 vector<Song> song_registry;
