@@ -4,6 +4,7 @@ using namespace std;
 
 Network::Network() : userConnections(100) {}
 
+//find user by email
 int Network::findUserIndexByEmail(const std::string& email) const {
     for (int i = 0; i < (int)users.size(); ++i) {
         if (users[i].getEmail() == email) {
@@ -13,6 +14,7 @@ int Network::findUserIndexByEmail(const std::string& email) const {
     return -1;
 }
 
+//add new user
 void Network::addUser(const std::string& name, const std::string& email, UserRole role) {
     if (findUserIndexByEmail(email) != -1) {
         std::cout << "Error: User with email " << email << " already exists." << std::endl;
@@ -26,6 +28,7 @@ void Network::addUser(const std::string& name, const std::string& email, UserRol
     std::cout << "User '" << name << "' added successfully." << std::endl;
 }
 
+//show user details
 void Network::displayUserProfile(const std::string& email) const {
     int index = findUserIndexByEmail(email);
     if (index != -1) {
@@ -35,6 +38,7 @@ void Network::displayUserProfile(const std::string& email) const {
     }
 }
 
+//list all users
 void Network::displayAllUsers() const {
     if (users.empty()) {
         std::cout << "No users in the network." << std::endl;
@@ -47,6 +51,7 @@ void Network::displayAllUsers() const {
     std::cout << "--------------------------" << std::endl;
 }
 
+//connect two users
 void Network::createConnection(const std::string& email1, const std::string& email2) {
     int index1 = findUserIndexByEmail(email1);
     int index2 = findUserIndexByEmail(email2);
@@ -61,6 +66,7 @@ void Network::createConnection(const std::string& email1, const std::string& ema
     }
 }
 
+//display the connection
 void Network::showConnections() const {
     std::cout << "\n--- User Connections Graph ---" << std::endl;
     for (size_t i = 0; i < users.size(); ++i) {

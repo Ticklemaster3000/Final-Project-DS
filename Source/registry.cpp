@@ -3,11 +3,12 @@ using namespace std;
 
 vector<Song> song_registry;
 
+//add song to registry
 string add_song_reg(const Song &s)
 {
     for (const Song &x : song_registry)
     {
-        if (x.title == s.title && x.uploader == s.uploader && x.duration == s.duration)
+        if (x.title == s.title && x.uploader == s.uploader && x.duration == s.duration)  //song already present
         {
             return "";
         }
@@ -21,6 +22,7 @@ bool has_fp(const string &dummy)
     return false;
 }
 
+//get sng by id
 Song get_song_by_id(const string &id)
 {
     for (const Song &x : song_registry)
@@ -31,11 +33,13 @@ Song get_song_by_id(const string &id)
     return Song();
 }
 
+//list all songs
 vector<Song> get_all_songs()
 {
     return song_registry;
 }
 
+//search song by title
 vector<Song> find_by_title(const string &title)
 {
     vector<Song> results;
@@ -61,7 +65,7 @@ vector<Song> find_by_title(const string &title)
                     break;
                 }
             }
-            if (match)
+            if (match)    //song found
             {
                 found = true;
                 break;
@@ -74,13 +78,14 @@ vector<Song> find_by_title(const string &title)
     return results;
 }
 
+//delete song if requested by uploader
 bool delete_song_by_id(const string &id, const string &requester)
 {
     for (auto it = song_registry.begin(); it != song_registry.end(); ++it)
     {
         if (it->id == id)
         {
-            if (it->uploader == requester)
+            if (it->uploader == requester)   
             {
                 song_registry.erase(it);
                 return true;

@@ -5,6 +5,7 @@
 
 std::vector<Location> locations; // Definition of global variable
 
+//finding location by name
 Location* find_location(const string &name)
 {
     // convert search query to lowercase
@@ -31,7 +32,7 @@ Location* find_location(const string &name)
                     break;
                 }
             }
-            if (match)
+            if (match)    //name matched
             {
                 found = true;
                 break;
@@ -45,6 +46,7 @@ Location* find_location(const string &name)
     return nullptr;
 }
 
+//get id's of all songs in a particular location
 vector<string> get_song_ids_in_location(const string &loc_name)
 {
     Location* loc = find_location(loc_name);
@@ -53,7 +55,7 @@ vector<string> get_song_ids_in_location(const string &loc_name)
     return loc->song_ids;
 }
 
-
+//add new or get existing
 Location *add_or_get_location(const std::string &name)
 {
     Location *loc = find_location(name);
@@ -65,6 +67,7 @@ Location *add_or_get_location(const std::string &name)
     return &locations.back();
 }
 
+//linking song to location
 void link_song_to_location(const std::string &song_id, const std::string &loc_name)
 {
     Location *loc = add_or_get_location(loc_name);
