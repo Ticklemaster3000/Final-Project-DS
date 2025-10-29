@@ -22,6 +22,7 @@ public:
     
     // Search & Filtering
     void findMusiciansByInstrument(const std::string& instrument) const;
+    void displayUserConnections(const std::string& email) const;
 
     // Getter
     std::vector<User> getAllUsers() const;

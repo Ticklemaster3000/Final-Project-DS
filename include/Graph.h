@@ -17,6 +17,9 @@ public:
 
     // Print the adjacency list representation of the graph
     void printGraph() const;
+    
+    std::list<int> getConnectionsOf(int v) const;
+
 
 private:
     int numVertices;
