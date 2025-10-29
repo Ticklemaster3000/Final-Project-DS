@@ -50,7 +50,7 @@ int main()
         cout << "Enter choice: ";
         int choice = read_choice();
 
-        if (choice == 1)
+        if (choice == 1)    //uploading a song
         {
             string title = read_line_prompt("Enter title: ");
             string uploader = read_line_prompt("Enter uploader name/id: ");
@@ -86,7 +86,7 @@ int main()
                 link_song_to_location(s.id, loc);
             }
         }
-        else if (choice == 2)
+        else if (choice == 2)    //search by title
         {
             string title = read_line_prompt("Enter exact title to search: ");
             vector<Song> found = find_by_title(title);
@@ -104,7 +104,7 @@ int main()
                 }
             }
         }
-        else if (choice == 3)
+        else if (choice == 3)     //list all songs
         {
             vector<Song> all = get_all_songs();
             if (all.empty())
@@ -124,12 +124,12 @@ int main()
                 }
             }
         }
-        else if (choice == 4)
+        else if (choice == 4)      //exit
         {
             cout << "Exiting. Bye.\n";
             break;
         }
-        else if (choice == 5)
+        else if (choice == 5)     //search by location
         {
             string loc = read_line_prompt("Enter location name to view songs: ");
             vector<string> ids = get_song_ids_in_location(loc);
