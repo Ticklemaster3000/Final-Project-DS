@@ -1,5 +1,7 @@
 # Social Network for Musicians
 
+https://github.com/Ticklemaster3000/Final-Project-DS/tree/main
+
 This is a simple console-based C++ application that simulates a basic social and music-sharing network. Users can register profiles, connect with other users, and manage a registry of songs.
 
 This project was developed to demonstrate the use of core data structures and object-oriented principles, including vectors, lists, and a custom graph implementation.
