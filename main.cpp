@@ -224,6 +224,7 @@ void musicianMenu(User& user) {
         cout << "----- LOCATION FUNCTIONS -----\n";
         cout << "11. Link Song to Location\n";
         cout << "12. Search Songs by Location\n";
+        cout << "13. View My Connections\n";
         cout << "----- OTHER -----\n";
         cout << "0. Logout\n";
         cout << "Enter choice: ";
@@ -247,6 +248,7 @@ void musicianMenu(User& user) {
         else if (choice == 10) searchSongsByTitle();
         else if (choice == 11) linkSongToLocation(user);
         else if (choice == 12) searchSongsByLocation();
+        else if (choice == 13) network.displayUserConnections(user.getEmail());
     }
 }
 
@@ -256,6 +258,7 @@ int main() {
         cout << "\n===== WELCOME TO MUSIC NETWORK =====\n";
         cout << "1. Register\n";
         cout << "2. Login\n";
+        cout << "3. View All Connections\n";
         cout << "0. Exit\n";
         cout << "Enter choice: ";
         cin >> mainChoice;
@@ -267,6 +270,7 @@ int main() {
             if (currentUser) musicianMenu(*currentUser);
             currentUser = nullptr;
         }
+        else if (mainChoice == 3) network.showConnections();
     }
     cout << "Goodbye.\n";
     return 0;
