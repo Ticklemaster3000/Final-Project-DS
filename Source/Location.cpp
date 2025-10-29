@@ -1,5 +1,5 @@
-#include "location.h"
-#include "song.h"
+#include "Location.h"
+#include "Song.h"
 #include <string>
 #include <vector>
 
