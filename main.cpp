@@ -9,6 +9,7 @@ using namespace std;
 User* currentUser = nullptr;
 Network network;
 
+//choose user role
 UserRole selectRole() {
     int roleChoice;
     cout << "Select role (1=Musician, 2=Band, 3=Listener, 4=Student): ";
@@ -20,6 +21,7 @@ UserRole selectRole() {
     return UserRole::MUSICIAN;
 }
 
+//register new user
 void registerUser() {
     string name, email;
     cout << "Enter name: ";
@@ -30,6 +32,7 @@ void registerUser() {
     network.addUser(name, email, role);
 }
 
+//login existing user
 void loginUser() {
     string email;
     cout << "Enter email: ";
@@ -41,6 +44,7 @@ void loginUser() {
         cout << "No such user. Please register first.\n";
 }
 
+//upload a song
 void uploadSong(User& user) {
     Song s;
     cout << "Song ID: ";
@@ -58,6 +62,7 @@ void uploadSong(User& user) {
     else cout << "Song uploaded.\n";
 }
 
+//delete a song
 void deleteSong(User& user) {
     string id;
     cout << "Enter song ID to delete: ";
@@ -69,6 +74,7 @@ void deleteSong(User& user) {
     else cout << "Failed: either not found or you are not the uploader.\n";
 }
 
+//view user's songs
 void viewMySongs(User& user) {
     vector<Song> songs = get_all_songs();
     bool found = false;
@@ -81,6 +87,7 @@ void viewMySongs(User& user) {
     if (!found) cout << "No results found.\n";
 }
 
+//view all songs
 void viewAllSongs() {
     vector<Song> songs = get_all_songs();
     if (songs.empty()) { cout << "No results found.\n"; return; }
@@ -88,6 +95,7 @@ void viewAllSongs() {
         cout << "ID: " << s.id << " | Title: " << s.title << " | Uploader: " << s.uploader << endl;
 }
 
+//search by title
 void searchSongsByTitle() {
     string query;
     cout << "Enter part of the title to search: ";
@@ -117,6 +125,7 @@ void searchSongsByTitle() {
         cout << "ID: " << s.id << " | Title: " << s.title << " | Uploader: " << s.uploader << endl;
 }
 
+//link a song to location
 void linkSongToLocation(User& user) {
     string song_id, loc;
     cout << "Enter your song ID: ";
@@ -130,6 +139,7 @@ void linkSongToLocation(User& user) {
     cout << "Linked successfully.\n";
 }
 
+//search a song by location
 void searchSongsByLocation() {
     string query;
     cout << "Enter part of the location name: ";
@@ -160,6 +170,7 @@ void searchSongsByLocation() {
     }
 }
 
+//add instrument
 void addInstrument(User& user) {
     string instr;
     cout << "Instrument: ";
@@ -168,6 +179,7 @@ void addInstrument(User& user) {
     cout << "Instrument added.\n";
 }
 
+//set skill level
 void setSkillLevel(User& user) {
     int lvl;
     cout << "Skill (1=Beginner,2=Intermediate,3=Expert): ";
@@ -178,6 +190,7 @@ void setSkillLevel(User& user) {
     cout << "Skill level set.\n";
 }
 
+//search user by name
 void searchUserDetails() {
     string query;
     cout << "Enter part of the user's name: ";
