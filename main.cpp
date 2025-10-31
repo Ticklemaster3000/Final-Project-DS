@@ -2,8 +2,8 @@
 #include <string>
 #include <vector>
 #include "include/Network.h"
-#include "include/registry.h"
-#include "include/location.h"
+#include "include/Registry.h"
+#include "include/Location.h"
 using namespace std;
 
 User* currentUser = nullptr;
