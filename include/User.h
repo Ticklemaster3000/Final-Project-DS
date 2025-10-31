@@ -5,7 +5,6 @@
 #include <string>
 #include <vector>
 
-// Enum for user roles to avoid magic strings
 enum class UserRole {
     MUSICIAN,
     BAND,
@@ -13,7 +12,6 @@ enum class UserRole {
     STUDENT
 };
 
-// Enum for skill levels
 enum class SkillLevel {
     BEGINNER,
     INTERMEDIATE,
@@ -35,16 +33,13 @@ public:
     std::string getEmail() const;
 
 private:
-    // Private Member Variables
-    // Identification
     std::string name;
-    std::string email; // Used as a unique identifier
+    std::string email; 
     std::string phone; // Optional
     UserRole role;
 
-    // Collaboration
     std::vector<std::string> instrumentsPlayed;
     SkillLevel skillLevel;
 };
 
-#endif // USER_H
+#endif
